@@ -1,5 +1,7 @@
 
 import random
+import os
+import sys
 from nltk.tokenize.regexp import RegexpTokenizer
 from nltk.tokenize import TreebankWordTokenizer
 import re
@@ -17,17 +19,17 @@ tagger = pickle.load(f)
 
 #wordlists using Treebank tags: jj, jjr, jjs, nn, nns, vb, vbd, vbg, vbn, vbp, vbz
 
-jj = WordListTokenizer.tokenize((open(r'C:\Users\paulp\Desktop\Computing Notes and Projects\wordswap\jj.txt')).read()) 
-jjr = WordListTokenizer.tokenize((open(r'C:\Users\paulp\Desktop\Computing Notes and Projects\wordswap\jjr.txt')).read()) 
-jjs = WordListTokenizer.tokenize((open(r'C:\Users\paulp\Desktop\Computing Notes and Projects\wordswap\jjs.txt')).read())
-nn = WordListTokenizer.tokenize((open(r'C:\Users\paulp\Desktop\Computing Notes and Projects\wordswap\nn.txt')).read())
-nns = WordListTokenizer.tokenize((open(r'C:\Users\paulp\Desktop\Computing Notes and Projects\wordswap\nns.txt')).read())
-vb = WordListTokenizer.tokenize((open(r'C:\Users\paulp\Desktop\Computing Notes and Projects\wordswap\vb.txt')).read())
-vbd = WordListTokenizer.tokenize((open(r'C:\Users\paulp\Desktop\Computing Notes and Projects\wordswap\vbd.txt')).read())
-vbg = WordListTokenizer.tokenize((open(r'C:\Users\paulp\Desktop\Computing Notes and Projects\wordswap\vbg.txt')).read())
-vbn = WordListTokenizer.tokenize((open(r'C:\Users\paulp\Desktop\Computing Notes and Projects\wordswap\vbn.txt')).read())
-vbp = WordListTokenizer.tokenize((open(r'C:\Users\paulp\Desktop\Computing Notes and Projects\wordswap\vbp.txt')).read())
-vbz = WordListTokenizer.tokenize((open(r'C:\Users\paulp\Desktop\Computing Notes and Projects\wordswap\vbz.txt')).read())
+jj = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'jj.txt')).read())) 
+jjr = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'jjr.txt')).read()) 
+jjs = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'jjs.txt')).read())
+nn = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'nn.txt')).read())
+nns = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'nns.txt')).read())
+vb = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'vb.txt')).read())
+vbd = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'vbd.txt')).read())
+vbg = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'vbg.txt')).read())
+vbn = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'vbn.txt')).read())
+vbp = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'vbp.txt')).read())
+vbz = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'vbz.txt')).read())
 
 #original has to be str input
 
