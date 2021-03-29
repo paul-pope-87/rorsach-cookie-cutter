@@ -46,48 +46,53 @@ def WordSwap(txt):
     for pos in postags:
         oldword = pos[0]
         oldpattern = '[^a-zA-Z0-9]' + oldword + '[^a-zA-Z0-9]'
+        if re.search(oldpattern, newtxt):
+            location = re.search(oldpattern, newtxt).span()
         #bypass stopwords
-        if oldpword in stopwords:
-            newword = oldword
-            newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+            if oldword in stopwords:
+                newword = oldword
+                newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+            
             #bypass contractions
-        elif re.search('\w*\'w*', oldword) == None: 
-            #ensure the replacement location is a standalone word, not word part.    
-            if re.search(oldpattern, newtxt) != None: 
-                location = re.search(oldpattern, newtxt).span()
-                if pos[1] == 'JJ':
-                    newword = jj[random.randint(0, len(jj)-1)]
-                    newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
-                if pos[1] == 'JJR':
-                    newword = jjr[random.randint(0, len(jjr)-1)]
-                    newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
-                if pos[1] == 'JJS':
-                    newword = jjs[random.randint(0, len(jjs)-1)]                        
-                    newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
-                if pos[1] == 'NN':
-                    newword = nn[random.randint(0, len(nn)-1)]
-                    newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
-                if pos[1] == 'NNS':
-                    newword = nns[random.randint(0, len(nns)-1)]
-                    newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
-                if pos[1] == 'VB':
-                    newword = vb[random.randint(0, len(vb)-1)]
-                    newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
-                if pos[1] == 'VBD':
-                    newword = vbd[random.randint(0, len(vbd)-1)]
-                    newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
-                if pos[1] == 'VBG':
-                    newword = vbg[random.randint(0, len(vbg)-1)]
-                    newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
-                if pos[1] == 'VBN':
-                    newword = vbn[random.randint(0, len(vbn)-1)]
-                    newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
-                if pos[1] == 'VBP':
-                    newword = vbp[random.randint(0, len(vbp)-1)]
-                    newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
-                if pos[1] == 'VBZ':
-                    newword = vbz[random.randint(0, len(vbz)-1)]
-                    newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+            elif re.search('\w*\'w*', oldword) == None: 
+                #ensure the replacement location is a standalone word, not word part.    
+                if re.search(oldpattern, newtxt) != None: 
+                
+                    if pos[1] == 'JJ':
+                        newword = jj[random.randint(0, len(jj)-1)]
+                        newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+                    if pos[1] == 'JJR':
+                        newword = jjr[random.randint(0, len(jjr)-1)]
+                        newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+                    if pos[1] == 'JJS':
+                        newword = jjs[random.randint(0, len(jjs)-1)]                        
+                        newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+                    if pos[1] == 'NN':
+                        newword = nn[random.randint(0, len(nn)-1)]
+                        newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+                    if pos[1] == 'NNS':
+                        newword = nns[random.randint(0, len(nns)-1)]
+                        newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+                    if pos[1] == 'VB':
+                        newword = vb[random.randint(0, len(vb)-1)]
+                        newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+                    if pos[1] == 'VBD':
+                        newword = vbd[random.randint(0, len(vbd)-1)]
+                        newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+                    if pos[1] == 'VBG':
+                        newword = vbg[random.randint(0, len(vbg)-1)]
+                        newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+                    if pos[1] == 'VBN':
+                        newword = vbn[random.randint(0, len(vbn)-1)]
+                        newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+                    if pos[1] == 'VBP':
+                        newword = vbp[random.randint(0, len(vbp)-1)]
+                        newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+                    if pos[1] == 'VBZ':
+                        newword = vbz[random.randint(0, len(vbz)-1)]
+                        newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+                else:
+                    pass
             else:
                 pass
         else:
