@@ -32,6 +32,7 @@ vbn = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'vbn.txt')).rea
 vbp = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'vbp.txt')).read()))
 vbz = WordListTokenizer.tokenize((open(os.path.join(sys.path[0], 'vbz.txt')).read()))
 
+stopwords = stopwords.words('english')
 #original has to be str input
 
 def WordSwap(txt):
@@ -41,7 +42,6 @@ def WordSwap(txt):
     tokens = InputTokenizer.tokenize(txt)
     postags = tagger.tag(tokens)
     newtxt = txt
-    stopwords = stopwords.words('english')
 
     for pos in postags:
         oldword = pos[0]
@@ -62,7 +62,8 @@ def WordSwap(txt):
                     newword = jjr[random.randint(0, len(jjr)-1)]
                     newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
                 if pos[1] == 'JJS':
-                    newword = jjs[random.randint(0, len(jjs)-1)]                        newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
+                    newword = jjs[random.randint(0, len(jjs)-1)]                        
+                    newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
                 if pos[1] == 'NN':
                     newword = nn[random.randint(0, len(nn)-1)]
                     newtxt = newtxt[:location[0]+1] + newword + newtxt[(location[1]-1):]
