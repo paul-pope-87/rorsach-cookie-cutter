@@ -47,7 +47,7 @@ def WordSwap(txt):
         oldword = pos[0]
         oldpattern = '[^a-zA-Z0-9]' + oldword + '[^a-zA-Z0-9]'
         #ensure the replacement location is a standalone word, not word part.    
-        if re.search(oldpattern, newtxt):
+        if re.search(oldpattern, newtxt) != None:
             location = re.search(oldpattern, newtxt).span()
         
             #bypass stopwords
